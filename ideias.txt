@@ -1,0 +1,9 @@
+- fazer nova tab com EFA
+- ter pelo menos 2 bancos de dados, BFI e DASS (recorte)
+- fazer explicação em texto do que é EFA
+- fazer explicação em texto do que é EGA
+- plotar as correlações EGA
+- plotar as correlações EFA
+- explicar o cálculo da EFA
+- explicar o cálculo da EGA
+- Plotar especificamente a carga dos itens nas dimensões https://rpubs.com/danmirman/plotting_factor_analysis
