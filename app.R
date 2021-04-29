@@ -1,7 +1,8 @@
 #  ----------------------------------------
 # Nome: Estimando Variáveis Latentes
-# Autora: Gabriel dos Reis Rodrigues
+# Autor: Gabriel dos Reis Rodrigues
 # Abril, 2021
+# última atualização: 29/04/2021
 # ----------------------------------------
 
 # Initial loading ====
@@ -178,7 +179,7 @@ ui <- fluidPage(theme = shinythemes::shinytheme("yeti"),
                      
                      # Painel 3 - Texto ====
                      tabPanel('O que é a AFE?',
-                              mainPanel('textotextotexto'))
+                              mainPanel(texto_afe))
                      
                  )))
 )

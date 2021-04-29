@@ -21,7 +21,7 @@ texto_ega <-
   Este artigo será um breve resumo dos desenvolvimentos recentes em EGA, 
   visando a divulgação deste método.",
   
-  strong(h3('Exploratory Graph Analysis')), '[asdasd](https://twitter.com)',
+  strong(h3('Exploratory Graph Analysis')),
 
   "Os métodos de psicometria de rede ganharam atenção recentemente na literatura
   das ciências psicológicas. Isso pode ser devido à mudança na interpretação 
@@ -71,4 +71,49 @@ texto_ega <-
   matriz de covariância. Como o intuito não é ensinar a calcular a inversa de 
   uma matriz, deixamos como dever de casa.
   EBICglasso")
+
+texto_afe <-
+  c(
+  "Análise Fatorial Exploratória (AFE) é uma ferramenta estatística que serve 
+  para diversas propostas. Em ciências sociais (e.g. Psicologia, Educação) ela 
+  tem servido o propósito geral de diminuir o número de dimensões/fatores de 
+  uma escala ou instrumento. Isto é, a redução do número de parâmetros para 
+  o número de traços latentes/construtos psicológicos. Assim, podemos definir 
+  como objetivo da AFE:
+  
+  Avaliar a dimensionalidade de uma série de indicadores de maneira a identificar 
+  o menor número de traços latentes que explica o padrão das correlações 
+  (Osborne, 2014).
+
+  De maneira mais formal, o modelo fatorial comum (Common Factor Model) vê a 
+  covariância entre variáveis observáveis como um reflexo da influência de um 
+  ou mais fatores e a variância não explicada. Os itens são considerados 
+  indicadores que variam de acordo com o nível de traço latente, ou seja, 
+  quanto maior seu nível de Depressão, maior seria sua concordância com o item 
+  “Tenho me sentido deprimido”.
+  Por exemplo, no instrumento DASS-21 tem-se 21 parâmetros (ou itens) que se 
+  propõem a medir Depressão, Ansiedade e Estresse. Para que serveria realizar 
+  uma AFE? Para diminuir o número de parâmetros que temos e agrupá-lo em um ou 
+  mais traços latentes. Ou seja, ao invés de nós termos 21 indicadores 
+  diferentes que avaliam Depressão/Ansiedade/Estresse, fazemos uma redução 
+  para 3 indicadores (traços latentes) que explicam a variância dos itens.
+  A AFE divide entre a variância em comum (comunalidade) e a variância única 
+  (singularidade). A variância em comum diz respeito a influência compartilhada 
+  de traços latentes em um indicador. Já a variância única pode representar duas 
+  coisas: variação do item que reflete causas latentes não conhecidas; e erro 
+  aleatório dado a falta de confiabilidade ou erro de medida.
+  O modelo fatorial comum se baseia na mecânica de regressão linear, e 
+  especifica que os dados observáveis refletem uma combinação linear da 
+  influência do traço latente.",
+  
+  "Se temos 1 indicador/item, representando m fatores, temos a seguinte notação:",
+  
+  strong(h3('Por que ela é chamada de Exploratória?')), 
+  
+  "Ela é mais data-driven, ou seja, não se pressupõe estatisticamente qual é o 
+  comportamento da relação entre as variáveis. Em uma Análise Fatorial 
+  Confirmatória, se fixa os parâmetros e os itens carregam apenas em seus 
+  respectivos fatores. Já na AFE o item pode carregar tanto no seu fator 
+  hipotetizado quanto nos demais fatores."
+  )
 
