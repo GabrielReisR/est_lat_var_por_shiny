@@ -1,4 +1,4 @@
-#  ----------------------------------------
+# ----------------------------------------
 # Nome: Estimando Variáveis Latentes
 # Autor: Gabriel dos Reis Rodrigues
 # Abril, 2021
@@ -7,24 +7,15 @@
 
 # Initial loading ====
 if (!require("EGAnet"))
-    install.packages("EGAnet")
-if (!require("ggcorrplot"))
-    install.packages("ggcorrplot")
-if (!require("plotly"))
-    install.packages("plotly")
+    install.packages("EGAnet"); library(EGAnet)
+if(!require("plotly"))
+    install.packages("plotly"); library(plotly)
 if(!require("psych"))
-    install.packages("psych")
+    install.packages("psych"); library(psych)
 if (!require("shiny"))
-    install.packages("shiny")
+    install.packages("shiny"); library(shiny)
 if(!require("shinythemes"))
-    install.packages("shinythemes")
-
-library(EGAnet)
-library(ggcorrplot)
-library(plotly)
-library(psych)
-library(shiny)
-library(shinythemes)
+    install.packages("shinythemes"); library(shinythemes)
 
 source("funcoes.R", encoding = 'UTF-8')
 source("texto.R", encoding = 'UTF-8')
@@ -74,15 +65,18 @@ ui <- fluidPage(theme = shinythemes::shinytheme("yeti"),
                                                   h5(strong('Você escolheu TMFG')),
                                                   h6(strong(
                                                       'TMFG é um algoritmo...'
-                                                  )))
+                                                  ))),
+                                 
+                                 h6(strong('Para rodar isso no R, execute:')),
+                                 verbatimTextOutput('funcao_aeg')
                              )),
                              
                              # Plot
                              mainPanel(plotOutput('graph')))), 
                 
                 # Painel 2 - Correlações ====
-                tabPanel('Correlações',
-                         mainPanel(plotlyOutput('ega_corr'))),
+                #tabPanel('Correlações',
+                #         mainPanel(plotlyOutput('ega_corr'))),
                 
                 # Painel 3 - Texto ====
                 tabPanel('O que é a AEG?',
@@ -166,7 +160,10 @@ ui <- fluidPage(theme = shinythemes::shinytheme("yeti"),
                                                            os fatores são considerados
                                                            variáveis latentes', 
                                                            em('correlacionadas.')
-                                                       )))
+                                                       ))),
+                                      
+                                      h6(strong('Para rodar isso no R, execute:')),
+                                      verbatimTextOutput('funcao_afe'),
                                   )),
                                   
                                   # Plot
@@ -174,8 +171,8 @@ ui <- fluidPage(theme = shinythemes::shinytheme("yeti"),
                      
                      
                      # Painel 2 - Correlações ====
-                     tabPanel('Correlações',
-                              mainPanel(plotlyOutput('efa_corr'))),
+                     #tabPanel('Correlações',
+                     #         mainPanel(plotlyOutput('efa_corr'))),
                      
                      # Painel 3 - Texto ====
                      tabPanel('O que é a AFE?',
@@ -187,7 +184,7 @@ ui <- fluidPage(theme = shinythemes::shinytheme("yeti"),
 # Server ====
 server <- function(input, output) {
     
-    # AGE ====
+    # AEG ====
     output$graph <- renderPlot({
         ega_plot(modelo = input$model,
                  algoritmo = input$algorithm,
@@ -199,25 +196,37 @@ server <- function(input, output) {
         ega_cor_plot(
             modelo = input$model,
             algoritmo = input$algorithm,
-            tipo_plot = input$type_plot
-        )
+            tipo_plot = input$type_plot)
     })
     
-    # EFA ====
+    # Função AEG ====
+    output$funcao_aeg <- renderPrint({
+        funcao_ega(modelo = input$model,
+                   algoritmo = input$algorithm,
+                   tipo_plot = input$type_plot)
+    })
+    
+    # AFE ====
     output$efa <- renderPlot({
         efa_plot(numero_fatores = input$n_factors,
                  rotacao = input$rotation,
                  fatoracao = input$factoring)
     })
     
-    # Correlação EFA ====
+    # Correlação AFE ====
     output$efa_corr <- renderPlotly({
         efa_cor_plot(numero_fatores = input$n_factors,
                      rotacao = input$rotation,
                      fatoracao = input$factoring)
         
     })
-    
+
+    # Função AFE ====
+    output$funcao_afe <- renderPrint({
+        funcao_efa(numero_fatores = input$n_factors,
+                   rotacao = input$rotation,
+                   fatoracao = input$factoring)
+    })
 }
 
 # Run the application 
